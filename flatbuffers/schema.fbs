@@ -1,0 +1,109 @@
+namespace ws_api;
+
+enum Action: byte {
+    // server requests
+    SR_INIT_CONSUMER,
+    SR_INIT_TRANSPORTS,
+    SR_PING,
+    // server messages
+    SM_BROADCAST,
+    SM_SESSION_LEAVE,
+    SM_INFO_CHANGE,
+    // client requests
+    CR_CONNECT_CTS_TRANSPORT,
+    CR_CONNECT_STC_TRANSPORT,
+    CR_INIT_PRODUCER,
+    // client messages
+    CM_BROADCAST,
+    CM_CONSUMPTION_CHANGE,
+    CM_INFO_CHANGE,
+    CM_PRODUCER_CHANGE,
+}
+
+enum MediaKind: byte {
+    AUDIO,
+    VIDEO
+}
+
+enum MediaType: byte {
+    AUDIO,
+    CAMERA,
+    SCREEN,
+}
+
+table SrInitConsumerPayload {
+    id: string;
+    kind: MediaKind;
+    producer_id: string;
+    transport_id: string;
+    rtp_parameters: string; // TODO should be its own table
+    session_id: string;
+    type: MediaType;
+    active: bool;
+}
+
+table SrInitTransportsPayload {
+    id: string;
+}
+
+table SmBroadcastPayload {
+    id: string;
+}
+
+table SmSessionLeavePayload {
+    id: string;
+}
+
+table SmInfoChangePayload {
+    id: string;
+}
+
+table CrConnectCtsTransportPayload {
+    id: string;
+}
+
+table CrConnectStcTransportPayload {
+    id: string;
+}
+
+table CrInitProducerPayload {
+    id: string;
+}
+
+table CmBroadcastPayload {
+    id: string;
+}
+
+table CmConsumptionChangePayload {
+    id: string;
+}
+
+table CmInfoChangePayload {
+    id: string;
+}
+
+table CmProducerChangePayload {
+    id: string;
+}
+
+union Content {
+    SrInitConsumerPayload,
+    SrInitTransportsPayload,
+    SmBroadcastPayload,
+    SmSessionLeavePayload,
+    SmInfoChangePayload,
+    CrConnectCtsTransportPayload,
+    CrConnectStcTransportPayload,
+    CrInitProducerPayload,
+    CmBroadcastPayload,
+    CmConsumptionChangePayload,
+    CmInfoChangePayload,
+    CmProducerChangePayload
+}
+
+table Message {
+    action: Action;
+    content: Content;
+}
+
+root_type Message;
