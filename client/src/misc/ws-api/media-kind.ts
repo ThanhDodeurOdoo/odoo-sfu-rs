@@ -3,6 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, @typescript-eslint/no-non-null-assertion */
 
 export enum MediaKind {
-  AUDIO = 0,
-  VIDEO = 1
+  audio = 0,
+  video = 1
 }

@@ -1,11 +1,8 @@
 #![allow(clippy::module_name_repetitions)]
 #![allow(clippy::expect_used)]
 use std::env;
-use std::env::temp_dir;
-use std::path::PathBuf;
 use std::sync::LazyLock;
 use std::thread;
-use std::time::Duration;
 
 pub static AUTH_KEY: LazyLock<String> =
     LazyLock::new(|| env::var("AUTH_KEY").expect("AUTH_KEY environment variable not set"));

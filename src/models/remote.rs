@@ -9,6 +9,12 @@ pub struct Remote {
     socket: WebSocket,
 }
 
+impl Drop for Remote {
+    fn drop(&mut self) {
+        self.cleanup();
+    }
+}
+
 impl Remote {
     pub fn new(remote_address: String, socket: WebSocket) -> Remote {
         Remote { remote_address, socket }
@@ -41,7 +47,6 @@ impl Remote {
                 _ => break,
             }
         }
-        self.cleanup();
     }
     pub fn cleanup(&self) {}
 }
