@@ -36,7 +36,7 @@ table SrInitConsumerPayload {
     kind: MediaKind;
     producer_id: string;
     transport_id: string;
-    rtp_parameters: string; // TODO should be its own table
+    rtp_parameters: string; // TODO should be JSON ser/de with mediasoup types.
     session_id: string;
     type: MediaType;
     active: bool;
