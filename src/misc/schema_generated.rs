@@ -154,8 +154,8 @@ pub const ENUM_MAX_MEDIA_KIND: i8 = 1;
 #[deprecated(since = "2.0.0", note = "Use associated constants instead. This will no longer be generated in 2021.")]
 #[allow(non_camel_case_types)]
 pub const ENUM_VALUES_MEDIA_KIND: [MediaKind; 2] = [
-  MediaKind::AUDIO,
-  MediaKind::VIDEO,
+  MediaKind::audio,
+  MediaKind::video,
 ];
 
 #[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
@@ -163,20 +163,20 @@ pub const ENUM_VALUES_MEDIA_KIND: [MediaKind; 2] = [
 pub struct MediaKind(pub i8);
 #[allow(non_upper_case_globals)]
 impl MediaKind {
-  pub const AUDIO: Self = Self(0);
-  pub const VIDEO: Self = Self(1);
+  pub const audio: Self = Self(0);
+  pub const video: Self = Self(1);
 
   pub const ENUM_MIN: i8 = 0;
   pub const ENUM_MAX: i8 = 1;
   pub const ENUM_VALUES: &'static [Self] = &[
-    Self::AUDIO,
-    Self::VIDEO,
+    Self::audio,
+    Self::video,
   ];
   /// Returns the variant's name or "" if unknown.
   pub fn variant_name(self) -> Option<&'static str> {
     match self {
-      Self::AUDIO => Some("AUDIO"),
-      Self::VIDEO => Some("VIDEO"),
+      Self::audio => Some("audio"),
+      Self::video => Some("video"),
       _ => None,
     }
   }
@@ -239,9 +239,9 @@ pub const ENUM_MAX_MEDIA_TYPE: i8 = 2;
 #[deprecated(since = "2.0.0", note = "Use associated constants instead. This will no longer be generated in 2021.")]
 #[allow(non_camel_case_types)]
 pub const ENUM_VALUES_MEDIA_TYPE: [MediaType; 3] = [
-  MediaType::AUDIO,
-  MediaType::CAMERA,
-  MediaType::SCREEN,
+  MediaType::audio,
+  MediaType::camera,
+  MediaType::screen,
 ];
 
 #[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
@@ -249,23 +249,23 @@ pub const ENUM_VALUES_MEDIA_TYPE: [MediaType; 3] = [
 pub struct MediaType(pub i8);
 #[allow(non_upper_case_globals)]
 impl MediaType {
-  pub const AUDIO: Self = Self(0);
-  pub const CAMERA: Self = Self(1);
-  pub const SCREEN: Self = Self(2);
+  pub const audio: Self = Self(0);
+  pub const camera: Self = Self(1);
+  pub const screen: Self = Self(2);
 
   pub const ENUM_MIN: i8 = 0;
   pub const ENUM_MAX: i8 = 2;
   pub const ENUM_VALUES: &'static [Self] = &[
-    Self::AUDIO,
-    Self::CAMERA,
-    Self::SCREEN,
+    Self::audio,
+    Self::camera,
+    Self::screen,
   ];
   /// Returns the variant's name or "" if unknown.
   pub fn variant_name(self) -> Option<&'static str> {
     match self {
-      Self::AUDIO => Some("AUDIO"),
-      Self::CAMERA => Some("CAMERA"),
-      Self::SCREEN => Some("SCREEN"),
+      Self::audio => Some("audio"),
+      Self::camera => Some("camera"),
+      Self::screen => Some("screen"),
       _ => None,
     }
   }
@@ -511,7 +511,7 @@ impl<'a> SrInitConsumerPayload<'a> {
     // Safety:
     // Created from valid Table for this object
     // which contains a valid value in this slot
-    unsafe { self._tab.get::<MediaKind>(SrInitConsumerPayload::VT_KIND, Some(MediaKind::AUDIO)).unwrap()}
+    unsafe { self._tab.get::<MediaKind>(SrInitConsumerPayload::VT_KIND, Some(MediaKind::audio)).unwrap()}
   }
   #[inline]
   pub fn producer_id(&self) -> Option<&'a str> {
@@ -546,7 +546,7 @@ impl<'a> SrInitConsumerPayload<'a> {
     // Safety:
     // Created from valid Table for this object
     // which contains a valid value in this slot
-    unsafe { self._tab.get::<MediaType>(SrInitConsumerPayload::VT_TYPE_, Some(MediaType::AUDIO)).unwrap()}
+    unsafe { self._tab.get::<MediaType>(SrInitConsumerPayload::VT_TYPE_, Some(MediaType::audio)).unwrap()}
   }
   #[inline]
   pub fn active(&self) -> bool {
@@ -591,12 +591,12 @@ impl<'a> Default for SrInitConsumerPayloadArgs<'a> {
   fn default() -> Self {
     SrInitConsumerPayloadArgs {
       id: None,
-      kind: MediaKind::AUDIO,
+      kind: MediaKind::audio,
       producer_id: None,
       transport_id: None,
       rtp_parameters: None,
       session_id: None,
-      type_: MediaType::AUDIO,
+      type_: MediaType::audio,
       active: false,
     }
   }
@@ -613,7 +613,7 @@ impl<'a: 'b, 'b, A: flatbuffers::Allocator + 'a> SrInitConsumerPayloadBuilder<'a
   }
   #[inline]
   pub fn add_kind(&mut self, kind: MediaKind) {
-    self.fbb_.push_slot::<MediaKind>(SrInitConsumerPayload::VT_KIND, kind, MediaKind::AUDIO);
+    self.fbb_.push_slot::<MediaKind>(SrInitConsumerPayload::VT_KIND, kind, MediaKind::audio);
   }
   #[inline]
   pub fn add_producer_id(&mut self, producer_id: flatbuffers::WIPOffset<&'b  str>) {
@@ -633,7 +633,7 @@ impl<'a: 'b, 'b, A: flatbuffers::Allocator + 'a> SrInitConsumerPayloadBuilder<'a
   }
   #[inline]
   pub fn add_type_(&mut self, type_: MediaType) {
-    self.fbb_.push_slot::<MediaType>(SrInitConsumerPayload::VT_TYPE_, type_, MediaType::AUDIO);
+    self.fbb_.push_slot::<MediaType>(SrInitConsumerPayload::VT_TYPE_, type_, MediaType::audio);
   }
   #[inline]
   pub fn add_active(&mut self, active: bool) {

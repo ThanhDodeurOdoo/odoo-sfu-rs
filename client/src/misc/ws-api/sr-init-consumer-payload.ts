@@ -35,7 +35,7 @@ id(optionalEncoding?:any):string|Uint8Array|null {
 
 kind():MediaKind {
   const offset = this.bb!.__offset(this.bb_pos, 6);
-  return offset ? this.bb!.readInt8(this.bb_pos + offset) : MediaKind.AUDIO;
+  return offset ? this.bb!.readInt8(this.bb_pos + offset) : MediaKind.audio;
 }
 
 producerId():string|null
@@ -68,7 +68,7 @@ sessionId(optionalEncoding?:any):string|Uint8Array|null {
 
 type():MediaType {
   const offset = this.bb!.__offset(this.bb_pos, 16);
-  return offset ? this.bb!.readInt8(this.bb_pos + offset) : MediaType.AUDIO;
+  return offset ? this.bb!.readInt8(this.bb_pos + offset) : MediaType.audio;
 }
 
 active():boolean {
@@ -85,7 +85,7 @@ static addId(builder:flatbuffers.Builder, idOffset:flatbuffers.Offset) {
 }
 
 static addKind(builder:flatbuffers.Builder, kind:MediaKind) {
-  builder.addFieldInt8(1, kind, MediaKind.AUDIO);
+  builder.addFieldInt8(1, kind, MediaKind.audio);
 }
 
 static addProducerId(builder:flatbuffers.Builder, producerIdOffset:flatbuffers.Offset) {
@@ -105,7 +105,7 @@ static addSessionId(builder:flatbuffers.Builder, sessionIdOffset:flatbuffers.Off
 }
 
 static addType(builder:flatbuffers.Builder, type:MediaType) {
-  builder.addFieldInt8(6, type, MediaType.AUDIO);
+  builder.addFieldInt8(6, type, MediaType.audio);
 }
 
 static addActive(builder:flatbuffers.Builder, active:boolean) {

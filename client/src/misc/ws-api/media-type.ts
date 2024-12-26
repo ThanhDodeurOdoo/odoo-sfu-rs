@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, @typescript-eslint/no-non-null-assertion */
 
 export enum MediaType {
-  AUDIO = 0,
-  CAMERA = 1,
-  SCREEN = 2
+  audio = 0,
+  camera = 1,
+  screen = 2
 }
